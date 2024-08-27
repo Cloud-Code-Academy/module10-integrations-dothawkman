@@ -5,6 +5,18 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+public static void getDummyJSONUserFromId(String dummyUserId) {
+		// Create HTTP request to send.
+			Http http = new http();
+			HttpRequest http = new HttpRequest();
+		
+		// Set the endpoint URL. Use direct URL or for best practices use Named Credential.
+			request.setEndpoint('https://dummyjson.com/user/' + dummyUserId);
+		// Set the HTTP method to GET.
+			request.setMethod('GET');
+		// Send the HTTP request and get the response.
+			HttpResponse response = http.send(request);
+			system.debug(reponse.getBody());
+			system.debug(response.getStatusCode());
+			system.debug(response.getStatus());
+}
